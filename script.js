@@ -16,7 +16,7 @@ onload = function () {
                 if (!flag) {
                     flag = true;
                     utterance = new SpeechSynthesisUtterance(document.querySelectorAll('article')[i].textContent);
-                    utterance.voice = getVoices()[0];
+                    utterance.voice = getVoices()[48];
                     utterance.onend = function () {
                         flag = false; playEle.className = pauseEle.className = ''; stopEle.className = 'stopped';
                     };
