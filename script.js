@@ -13,23 +13,30 @@ onload = function () {
             stopEle.addEventListener('click', onClickStop);
 
             function onClickPlay() {
-                if (!flag) {
-                    flag = true;
-                    utterance = new SpeechSynthesisUtterance(document.querySelectorAll('article')[i].textContent);
-                    utterance.voice = getVoices()[49];
-                    utterance.onend = function () {
-                        flag = false; playEle.className = pauseEle.className = ''; stopEle.className = 'stopped';
-                    };
-                    playEle.className = 'played';
-                    stopEle.className = '';
-                    speak(utterance);
+                if (audioPlayer.paused) {
+                    audioPlayer.play(); // Play the audio
+                    playButton.textContent = 'Pause'; // Update button text to 'Pause'
+                  } else {
+                    audioPlayer.pause(); // Pause the audio
+                    playButton.textContent = 'Play'; // Update button text to 'Play'
+                  }
+                // if (!flag) {
+                //     flag = true;
+                //     utterance = new SpeechSynthesisUtterance(document.querySelectorAll('article')[i].textContent);
+                //     utterance.voice = getVoices()[49];
+                //     utterance.onend = function () {
+                //         flag = false; playEle.className = pauseEle.className = ''; stopEle.className = 'stopped';
+                //     };
+                //     playEle.className = 'played';
+                //     stopEle.className = '';
+                //     speak(utterance);
                     
-                }
-                if (paused) { /* unpause/resume narration */
-                    playEle.className = 'played';
-                    pauseEle.className = '';
-                    resume();
-                }
+                // }
+                // if (paused) { /* unpause/resume narration */
+                //     playEle.className = 'played';
+                //     pauseEle.className = '';
+                //     resume();
+                // }
             }
 
             function onClickPause() {
